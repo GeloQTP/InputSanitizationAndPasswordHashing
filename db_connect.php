@@ -6,7 +6,7 @@ $db_pass = "";
 $db_name = "dashboarddb";
 
 try {
-    $conn = mysqli_connect(
+    $conn = mysqli_connect( // variable $conn to handle mysqli_connect() connection; it is now a variable.
         $db_host,
         $db_user,
         $db_pass,
