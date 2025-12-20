@@ -1,4 +1,8 @@
 <?php
+require("db_connect.php");
+?>
+
+<?php
 
 session_start();
 
@@ -9,7 +13,7 @@ if (isset($_COOKIE["username"])) { // checks if there are cookies available
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking for a submitted form or request method
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // santizing inputs
-    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // to avoid SQL injection
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // to avoid SQL injection, we can use | to add more arguments
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT); // encrypt our password.
 
     if (!empty($username) || !empty($password)) { // checks if inputs are clear/empty.
