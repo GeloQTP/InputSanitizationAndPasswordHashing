@@ -5,8 +5,11 @@ require("db_connect.php");
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    
 }
+
+$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // sanitizing inputs to prevent cross site script.
+$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // sanitizing inputs to prevent cross site script.
+password_hash($password, PASSWORD_BCRYPT); // password encryption.
 
 ?>
 
