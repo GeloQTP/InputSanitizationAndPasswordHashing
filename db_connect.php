@@ -5,10 +5,17 @@ $db_user = "root";
 $db_pass = "";
 $db_name = "dashboarddb";
 
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name); // mysqli_connect() function, requires 4 arguments
+try {
+    $conn = mysqli_connect(
+        $db_host,
+        $db_user,
+        $db_pass,
+        $db_name
+    ); // mysqli_connect() function, requires 4 arguments
+} catch (mysqli_sql_exception) { // catch if there is an error with our mysqli_connect()
+    echo "Connection Error";
+}
 
 if ($conn) { // checks if connection is successful.
     echo "You are Connected!";
-} else {
-    echo "Connection Error";
 }
