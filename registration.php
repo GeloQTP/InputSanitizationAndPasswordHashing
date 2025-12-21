@@ -5,11 +5,27 @@ require("db_connect.php");
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-}
+    $username = $_POST["username"] ?? '';
+    $password = $_POST["password"] ?? '';
 
-$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // sanitizing inputs to prevent cross site script.
-$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // sanitizing inputs to prevent cross site script.
-password_hash($password, PASSWORD_BCRYPT); // password encryption. (using the BCRYT algorithm).
+    if (empty($username) || empty($password)) { // checks if out input fields are empty.
+        echo "Please Input your Credentials!";
+    } else {
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT); // hash/encrypts the user password.
+
+        // $statement = "INSERT INTO users (username, passcode) VALUES (?,?)"; (A)
+
+        $statement = $conn->prepare("INSERT INTO users (username, passcode) VALUES (?,?)");
+        // sqli object function 'prepare' = It separates the SQL query structure from the data, ensuring that user input cannot alter the query logic.
+        //
+
+        $statement->bind_param("ss", $username, $hashedPassword); // A method won't work because this method is object oriented and much safer
+        $statement->execute();
+        $statement->close();
+        header("Location: login.php");
+        exit();
+    }
+}
 
 ?>
 
@@ -23,13 +39,14 @@ password_hash($password, PASSWORD_BCRYPT); // password encryption. (using the BC
 </head>
 
 <body>
-    <form action="registration.php" method="post">
+    <h1>Register</h1>
+    <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
         <label for="username">Username</label> <br>
         <input type="text" name="username" id="username"><br>
 
         <label for="password">Password: </label> <br>
         <input type="password" name="password" id="password"> <br>
-
+        <a href="login.php">Already have an account? Log in here</a> <br>
         <input type="submit" value="Register" name="register">
     </form>
 </body>

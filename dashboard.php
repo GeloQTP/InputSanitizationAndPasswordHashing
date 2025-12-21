@@ -1,3 +1,14 @@
+<?php
+require("db_connect.php");
+?>
+
+<?php
+
+if (!isset($_SESSION["username"])) {
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

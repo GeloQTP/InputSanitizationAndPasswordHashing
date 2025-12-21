@@ -1,6 +1,6 @@
 <?php
 
-mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ALL); // needed 
+mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ALL); // needed
 // without this, even if our try catch block catches the error the web will still output this error
 
 //PHP does not report mysqli or PDO errors by default because that information is highly sensitive, displaying it to a user is a great way to learn how to inject malicious data.
@@ -17,11 +17,11 @@ $db_name = "dashboarddb";
 try {
     // $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name); // mysqli_connect() function, requires 4 arguments.
     $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
-    if ($conn->connect_error) { // checks if connection is successful.
-        echo "Database Connection Error. Please Try again Later.";
-    } else {
-        echo "Database Connection State: Connected!";
-    }
+    // if ($conn->connect_error) { // checks if connection is successful.
+    //     echo "Database Connection Error. Please Try again Later.";
+    // } else {
+    //     echo "DB State: Connected. <br>";
+    // }
 } catch (mysqli_sql_exception) { // catch if there is an error with our mysqli_connect().
     echo "Database Connection Error. Please Try again Later.";
 }
