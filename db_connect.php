@@ -15,8 +15,11 @@ $db_pass = "";
 $db_name = "dashboarddb";
 
 try {
-    $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name); // mysqli_connect() function, requires 4 arguments.
-    if ($conn) { // checks if connection is successful.
+    // $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name); // mysqli_connect() function, requires 4 arguments.
+    $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+    if ($conn->connect_error) { // checks if connection is successful.
+        echo "Database Connection Error. Please Try again Later.";
+    } else {
         echo "Database Connection State: Connected!";
     }
 } catch (mysqli_sql_exception) { // catch if there is an error with our mysqli_connect().
