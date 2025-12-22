@@ -3,12 +3,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Roboto;
-    color: white;
+    color: #F6EFA6;
 }
 
 :root {
-    --background-color: rgb(80, 91, 255);
-    --button-color: rgb(255, 193, 60);
+    --background-color: #66B3BA;
+    --button-color: #42CAFD;
 }
 
 main {
@@ -31,12 +31,12 @@ h1 {
     position: absolute;
     top: 1em;
     left: 1.5em;
-    font-size: larger;
+    font-size: 1.5rem;
 }
 
 form {
-    translate: 0em -1em;
     position: relative;
+    /*for the login button's absolute positioning*/
 }
 
 .inputs {
@@ -73,7 +73,10 @@ a:hover {
 #login_btn {
     position: absolute;
     right: 0;
-    padding: 0.5em;
+    padding: 1em;
+    border-radius: 10px;
     border: none;
     background-color: var(--button-color);
+    font-size: 1rem;
+    cursor: pointer;
 }
