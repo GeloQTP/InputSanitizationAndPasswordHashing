@@ -73,7 +73,7 @@ a:hover {
 #login_btn {
     position: absolute;
     right: 0;
-    padding: 1em;
+    padding: 0.7em;
     border-radius: 10px;
     border: none;
     background-color: var(--button-color);
