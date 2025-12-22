@@ -22,9 +22,20 @@ if (!isset($_SESSION["username"])) {
     <header>
         <?php require("header.php"); ?> <!--newer and stricter version of include("file_name");-->
     </header>
+
+
+
     <main>
-        <?php require("footer.html");  ?>
+
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem reprehenderit, tempore ipsum ad amet ab, sed eum fugiat aperiam nesciunt totam earum inventore soluta, qui incidunt doloremque illum. Illum, doloribus!
+
     </main>
+
+
+
+    <footer>
+        <?php require("footer.html");  ?>
+    </footer>
 
     <footer>
     </footer>

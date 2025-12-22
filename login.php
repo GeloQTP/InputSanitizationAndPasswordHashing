@@ -33,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking 
             $hashedPasscode = $row["passcode"];
 
             if (password_verify($passcode, $hashedPasscode)) {
-                echo "There are total of:" . $result->num_rows . " user/s";
                 setcookie("username", $row["username"], time() + 3600, "/", "", true, true);
                 $_SESSION["username"] = $row["username"];
                 header("Location: dashboard.php");
+                exit();
             } else {
                 echo "Invalid Credentials";
             }

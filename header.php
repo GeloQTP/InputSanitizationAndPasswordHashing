@@ -31,13 +31,23 @@ if (empty($_SESSION["username"])) {
     }
 
     nav {
-        padding: 0.5rem;
-        background-color: aqua;
+        padding: 1.5rem;
+        background-color: #66B3BA;
     }
 
-    .notification::after {
-        content: '0';
-        display: inline-block;
+    #greeting_text {
+        font-size: 2rem;
+        font-family: Roboto;
+    }
+
+    #logout_btn {
+        border: none;
+        font-size: 1rem;
+        padding: 0.5rem;
+        border-radius: 5px;
+        background-color: #4e42fd;
+        cursor: pointer;
+        color: white;
     }
 </style>
 
@@ -46,14 +56,14 @@ if (empty($_SESSION["username"])) {
     <header>
         <nav style="display: flex; align-items: center; justify-content: space-between;">
 
-            <span style="font-family:Poppins">Welcome, <?= $_SESSION["username"] ?>!</span>
+            <div id="greeting_text">Welcome, <?= $_SESSION["username"] ?>!</div>
 
             <ul style="display: flex; list-style-type: none; gap: 20px; align-items: center;">
-                <li class="notification"><i class="fa fa-bell" style="font-size:14px"></i></li>
-                <li class="messages"><i class="fa fa-envelope" style="font-size:16px"></i></li>
-                <li class="settings"><i class="fa fa-gear" style="font-size:16px"></i></li>
-                <li class="profile-picture"><i class="fa fa-circle"></i></li>
-                <button style="border: none; font-size:0.5rem; padding: 0.2rem; border-radius: 2px" onclick="window.location.href='logout.php'">Log out</button>
+                <li class="notification"><i class="fa fa-bell" style="font-size:25px"></i></li>
+                <li class="messages"><i class="fa fa-envelope" style="font-size:25px"></i></li>
+                <li class="settings"><i class="fa fa-gear" style="font-size:30px"></i></li>
+                <li style="font-size: 30px;"><i class="fa fa-circle"></i></li>
+                <button onclick="window.location.href='logout.php'" id="logout_btn">Log out</button>
             </ul>
 
         </nav>
