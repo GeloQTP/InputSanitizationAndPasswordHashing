@@ -39,16 +39,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 
 <body>
-    <h1>Register</h1>
-    <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
-        <label for="username">Username</label> <br>
-        <input type="text" name="username" id="username"><br>
+    <main>
+        <div class="container">
+            <h1>REGISTER</h1>
+            <br>
+            <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
+                <div class="inputs">
+                    <label for="username">Username</label> <br>
+                    <input type="text" name="username" id="username"><br>
 
-        <label for="password">Password: </label> <br>
-        <input type="password" name="password" id="password"> <br>
-        <a href="login.php">Already have an account? Log in here</a> <br>
-        <input type="submit" value="Register" name="register">
-    </form>
+                    <label for="password">Password: </label> <br>
+                    <input type="password" name="password" id="password"> <br>
+                </div>
+                <a href="login.php">Already have an account? Log in here</a> <br>
+                <input type="submit" value="Register" name="register" id="register_btn">
+            </form>
+        </div>
+        </div>
+    </main>
 </body>
 
 </html>

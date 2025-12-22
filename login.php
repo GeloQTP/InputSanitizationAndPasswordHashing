@@ -59,32 +59,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-    </header>
-
     <main>
-        <h1>Login</h1>
-        <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post"> <!--$_SERVER["PHP_SELF"] is used to get the current file name-->
-            <label for="username">Username:</label><br>
-            <input type="text" name="username" id="username" required> <br>
+        <div class="container">
+            <h1>LOGIN</h1>
+            <br>
+            <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post"> <!--$_SERVER["PHP_SELF"] is used to get the current file name-->
+                <div class="inputs">
 
-            <label for="password">Password:</label> <br>
-            <input type="password" name="password" id="password" required> <br>
-            <a href="registration.php">Don't have an account? Register here.</a> <br>
-            <input type="submit" value="Submit" name="submit"> <br>
-        </form>
+                    <div> <label for="username">Username:</label><br>
+                        <input type="text" name="username" id="username" required> <br>
+                    </div>
+
+                    <div>
+                        <label for="password">Password:</label> <br>
+                        <input type="password" name="password" id="password" required> <br>
+                    </div>
+
+                </div>
+                <a href="registration.php">Don't have an account? Register here.</a> <br>
+                <input type="submit" value="LOG IN" name="submit" id="login_btn"> <br>
+            </form>
+        </div>
     </main>
-
-    <footer>
-    </footer>
 
 </body>
 <script src="script.js"></script>
 
-</html><?php
-        $passcode = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+</html>

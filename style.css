@@ -2,4 +2,78 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Roboto;
+    color: white;
+}
+
+:root {
+    --background-color: rgb(80, 91, 255);
+    --button-color: rgb(255, 193, 60);
+}
+
+main {
+    /*centralize our login form*/
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%
+}
+
+.container {
+    /*the login background*/
+    background-color: var(--background-color);
+    padding: 5em;
+    position: relative;
+
+}
+
+h1 {
+    position: absolute;
+    top: 1em;
+    left: 1.5em;
+    font-size: larger;
+}
+
+form {
+    translate: 0em -1em;
+    position: relative;
+}
+
+.inputs {
+
+    height: 8em;
+    width: 20em;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    margin: 0.4em 0em;
+}
+
+#username,
+#password {
+    /*inputs*/
+    width: 100%;
+    padding: 0.5em;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 1rem;
+    margin-top: 0.2em;
+    color: black;
+}
+
+a {
+    font-size: 0.8rem;
+}
+
+a:hover {
+    color: blue;
+}
+
+#login_btn {
+    position: absolute;
+    right: 0;
+    padding: 0.5em;
+    border: none;
+    background-color: var(--button-color);
 }
