@@ -71,7 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking 
             <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post"> <!--$_SERVER["PHP_SELF"] is used to get the current file name-->
                 <div class="inputs">
 
-                    <div> <label for="username">Username:</label><br>
+                    <div>
+                        <label for="username">Username:</label><br>
                         <input type="text" name="username" id="username" required> <br>
                     </div>
 
@@ -88,6 +89,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking 
     </main>
 
 </body>
-<script src="script.js"></script>
 
 </html>

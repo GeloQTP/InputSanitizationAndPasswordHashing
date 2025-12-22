@@ -8,7 +8,7 @@
 
 :root {
     --background-color: #66B3BA;
-    --button-color: #42CAFD;
+    --button-color: #4e42fd;
 }
 
 main {
@@ -22,6 +22,7 @@ main {
 .container {
     /*the login background*/
     background-color: var(--background-color);
+    border-radius: 10px;
     padding: 5em;
     position: relative;
 
@@ -29,7 +30,7 @@ main {
 
 h1 {
     position: absolute;
-    top: 1em;
+    top: 1.2em;
     left: 1.5em;
     font-size: 1.5rem;
 }
@@ -40,13 +41,13 @@ form {
 }
 
 .inputs {
-
+    /* translate: 0em -1em; */
     height: 8em;
     width: 20em;
     display: flex;
     gap: 1em;
     flex-direction: column;
-    margin: 0.4em 0em;
+    margin: 0em 0em 0.8em;
 }
 
 #username,
@@ -56,7 +57,7 @@ form {
     padding: 0.5em;
     outline: none;
     border: none;
-    border-bottom: 1px solid black;
+    border-radius: 5px;
     font-size: 1rem;
     margin-top: 0.2em;
     color: black;
@@ -70,13 +71,15 @@ a:hover {
     color: blue;
 }
 
-#login_btn {
+#login_btn,
+#register_btn {
     position: absolute;
     right: 0;
     padding: 0.7em;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
     background-color: var(--button-color);
     font-size: 1rem;
     cursor: pointer;
+    margin: 0.5em 0em;
 }

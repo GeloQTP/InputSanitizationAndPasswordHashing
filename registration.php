@@ -36,27 +36,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
     <main>
         <div class="container">
             <h1>REGISTER</h1>
             <br>
             <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
                 <div class="inputs">
-                    <label for="username">Username</label> <br>
-                    <input type="text" name="username" id="username"><br>
 
-                    <label for="password">Password: </label> <br>
-                    <input type="password" name="password" id="password"> <br>
+                    <div>
+                        <label for="username">Username</label> <br>
+                        <input type="text" name="username" id="username" required> <br>
+                    </div>
+
+                    <div>
+                        <label for="password">Password: </label> <br>
+                        <input type="password" name="password" id="password" required> <br>
+                    </div>
+
                 </div>
-                <a href="login.php">Already have an account? Log in here</a> <br>
+                <a href="login.php">Already have an account? Log in here.</a> <br>
                 <input type="submit" value="Register" name="register" id="register_btn">
             </form>
         </div>
-        </div>
     </main>
+
 </body>
 
 </html>
