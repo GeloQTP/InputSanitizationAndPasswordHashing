@@ -13,20 +13,21 @@ if (isset($_COOKIE["username"])) { // checks if there are cookies available
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking for a submitted form or request method
 
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // FILTERING INPUTS TO PREVENT CROSS SITE SCRIPTS
     $passcode = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    if (!empty($username) && !empty($passcode)) {
+    if (!empty($username) && !empty($passcode)) { // INPUT VALIDATION
 
-        $statement = $conn->prepare("SELECT * FROM users WHERE username = ?");
+        $statement = $conn->prepare("SELECT * FROM users WHERE username = ?"); // PREPARED SQL STATEMENT TO AVOID SQL INJECTION
         if (!$statement) {
             die("Database error: " . $conn->error);
         }
 
-        $statement->bind_param("s", $username);
-        $statement->execute();
+        $statement->bind_param("s", $username); // "s" = string, "$sername" = our input
+        $statement->execute(); // EXECUTE STATEMENT WITH THE BINDED PARAMETERS/VALUES ABOVE
 
         $result = $statement->get_result(); // you can get the result of your sql queries.
+
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $hashedPasscode = $row["passcode"];
