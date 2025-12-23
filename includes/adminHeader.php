@@ -1,7 +1,7 @@
 <?php
 session_start(); // needed at the top everytime we are we are going to access session variables
 
-if (!isset($_SESSION["username"])) {
+if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "admin") {
     header("Location: login.php");
     exit();
 }
@@ -55,7 +55,9 @@ if (!isset($_SESSION["username"])) {
                 <li class="messages"><i class="fa fa-envelope" style="font-size:25px"></i></li>
                 <li class="settings"><i class="fa fa-gear" style="font-size:30px"></i></li>
                 <li style="font-size: 30px;"><i class="fa fa-circle"></i></li>
-                <button onclick="window.location.href='logout.php'" id="logout_btn">Log out</button>
+                <form action="../includes/logout.php" method="post">
+                    <input type="submit" value="Log out" id="logout_btn">
+                </form>
             </ul>
 
         </nav>

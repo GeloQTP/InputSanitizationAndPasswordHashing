@@ -1,5 +1,5 @@
 <?php
-require("db_connect.php");
+require("../includes/db_connect.php");
 ?>
 
 <?php
@@ -29,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking 
         $result = $statement->get_result(); // you can get the result of your sql queries.
 
         if ($result->num_rows > 0) {
-            $wrongCredentials = false;
             $row = $result->fetch_assoc();
             $hashedPasscode = $row["passcode"];
 
@@ -48,11 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking 
                 }
             } else {
                 echo "Invalid Username or Password";
-                $wrongCredentials = true;
             }
         } else {
             echo "Invalid Username or Password";
-            $wrongCredentials = true;
         }
 
         $statement->close();
@@ -70,10 +67,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body style="background-color:<?= $wrongCredentials = true ? "white" : "red" ?>;">
+<body>
 
     <main>
         <div class="container">

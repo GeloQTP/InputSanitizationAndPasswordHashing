@@ -1,5 +1,5 @@
 <?php
-require("db_connect.php");
+require("../includes/db_connect.php");
 ?>
 
 <?php
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
 
                 </div>
-                <a href="login.php">Already have an account? Log in here.</a> <br>
+                <a href="login.php">Already have an account? Log in here.</a>
                 <input type="submit" value="Register" name="register" id="register_btn">
             </form>
         </div>
