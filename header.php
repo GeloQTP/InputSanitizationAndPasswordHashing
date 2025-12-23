@@ -52,8 +52,6 @@ if (empty($_SESSION["username"])) {
 </style>
 
 <body>
-
-    <header>
         <nav style="display: flex; align-items: center; justify-content: space-between;">
 
             <div id="greeting_text">Welcome, <?= $_SESSION["username"] ?>!</div>
@@ -67,8 +65,6 @@ if (empty($_SESSION["username"])) {
             </ul>
 
         </nav>
-    </header>
-
 </body>
 
 </html>
