@@ -8,7 +8,6 @@ $statement = $conn->prepare("SELECT * FROM users");
 $statement->execute();
 
 $result = $statement->get_result();
-$rows = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -33,16 +32,36 @@ $rows = $result->fetch_assoc();
 
     <main>
 
-        <h1>Welcome to the Admin Dashboard</h1>
-        <br>
-        <table border="1" cellspacing="5" cellpadding="5" width="50%" height="200" align="center" bgcolor="#f2f2f2">
-            <tr>
-                <th>Username</th>
-                <th>Registration Date</th>
-                <th>User Type</th>
-            </tr>
+        <div id="left-side">
+            <h1>Welcome to the Admin Dashboard</h1>
+            <br>
+            <table border="1" cellspacing="1" width="50%" height="150" bgcolor="#f2f2f2">
+                <tr>
+                    <th>Username</th>
+                    <th>Registration Date</th>
+                    <th>User Type</th>
+                </tr>
 
-        </table>
+                <?php
+                while ($rows = $result->fetch_assoc()) { // while the $rows still getting rows from $result->fetch_assoc(), loop
+                ?>
+
+                    <tr>
+                        <td><?= htmlspecialchars($rows["username"]) ?></td>
+                        <td><?= htmlspecialchars($rows["reg_date"]) ?></td>
+                        <td><?= htmlspecialchars($rows["role"]) ?></td>
+                    </tr>
+
+                <?php
+                }
+                ?>
+
+            </table>
+        </div>
+
+        <div id="right-side">
+
+        </div>
 
     </main>
 
