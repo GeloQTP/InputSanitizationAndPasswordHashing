@@ -19,14 +19,7 @@ if (empty($_SESSION["username"])) {
 </head>
 
 <style>
-    * {
-        /*css reset*/
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
+    header {
         margin: 0rem 0rem;
     }
 
@@ -36,7 +29,7 @@ if (empty($_SESSION["username"])) {
     }
 
     #greeting_text {
-        font-size: 2rem;
+        font-size: clamp(1rem, 1.5vw, 20rem);
         font-family: Roboto;
     }
 
@@ -52,6 +45,7 @@ if (empty($_SESSION["username"])) {
 </style>
 
 <body>
+    <header>
         <nav style="display: flex; align-items: center; justify-content: space-between;">
 
             <div id="greeting_text">Welcome, <?= $_SESSION["username"] ?>!</div>
@@ -65,6 +59,7 @@ if (empty($_SESSION["username"])) {
             </ul>
 
         </nav>
+    </header>
 </body>
 
 </html>

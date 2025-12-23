@@ -4,6 +4,6 @@
     box-sizing: border-box;
 }
 
-p {
-    color: red;
+main {
+    margin: 0.5em 2em;
 }

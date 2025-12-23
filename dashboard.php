@@ -16,7 +16,7 @@ if (!isset($_SESSION["username"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="dashBoard.css">
 </head>
 
 <body>
@@ -61,16 +61,15 @@ if (!isset($_SESSION["username"])) {
             <dd>Definition 3</dd>
         </dl>
         <br> <br>
+
         <ul>
             <li>List 1</li>
             <li>List 2
-                <ul>
-                    <li>Subt </li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+                <ol>
+                    <li>List 2 Sub List 1</li>
+                    <li>List 2 Sub List 2</li>
+                    <li>List 2 Sub List 3</li>
+                </ol>
             </li>
             <li>List 3</li>
             <li>List 4</li>
@@ -81,9 +80,6 @@ if (!isset($_SESSION["username"])) {
 
     <footer>
         <?php require("footer.html"); ?>
-    </footer>
-
-    <footer>
     </footer>
 </body>
 
