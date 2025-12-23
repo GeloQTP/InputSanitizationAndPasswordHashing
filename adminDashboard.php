@@ -2,13 +2,6 @@
 require("db_connect.php");
 ?>
 
-<?php
-
-if (!isset($_SESSION["username"])) {
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,12 +19,12 @@ if (!isset($_SESSION["username"])) {
     </div>
 
     <header>
-        <?php require("header.php"); ?> <!--newer and stricter version of include("file_name");-->
+        <?php require("adminHeader.php"); ?> <!--newer and stricter version of include("file_name");-->
     </header>
 
     <main>
 
-        <h1>Welcome to the Admin Dashboad</h1>
+        <h1>Welcome to the Admin Dashboard</h1>
 
     </main>
 

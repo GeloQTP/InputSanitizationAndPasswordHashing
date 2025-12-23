@@ -6,10 +6,10 @@ require("db_connect.php");
 
 session_start();
 
-if (isset($_COOKIE["username"])) { // checks if there are cookies available
-    header("Location: dashboard.php"); // if true, login
-    exit();
-}
+// if (isset($_COOKIE["username"])) { // checks if there are cookies available
+//     header("Location: dashboard.php"); // if true, login
+//     exit();
+// }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking for a submitted form or request method
 
@@ -29,19 +29,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking 
         $result = $statement->get_result(); // you can get the result of your sql queries.
 
         if ($result->num_rows > 0) {
+            $wrongCredentials = false;
             $row = $result->fetch_assoc();
             $hashedPasscode = $row["passcode"];
 
             if (password_verify($passcode, $hashedPasscode)) {
-                setcookie("username", $row["username"], time() + 3600, "/", "", true, true);
-                $_SESSION["username"] = $row["username"];
-                header("Location: dashboard.php");
-                exit();
+                // setcookie("username", $row["username"], time() + 3600, "/", "", true, true);
+                if ($row["role"] === "admin") {
+                    $_SESSION["username"] = $row["username"];
+                    $_SESSION["role"] = $row["role"];
+                    header("Location: adminDashboard.php");
+                    exit();
+                } else {
+                    $_SESSION["username"] = $row["username"];
+                    $_SESSION["role"] = $row["role"];
+                    header("Location: dashboard.php");
+                    exit();
+                }
             } else {
-                echo "Invalid Credentials";
+                echo "Invalid Username or Password";
+                $wrongCredentials = true;
             }
         } else {
-            echo "User not found";
+            echo "Invalid Username or Password";
+            $wrongCredentials = true;
         }
 
         $statement->close();
@@ -62,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking 
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body style="background-color:<?= $wrongCredentials = true ? "white" : "red" ?>;">
 
     <main>
         <div class="container">
@@ -72,17 +83,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking 
                 <div class="inputs">
 
                     <div>
-                        <label for="username">Username:</label><br>
-                        <input type="text" name="username" id="username" required> <br>
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" required>
                     </div>
 
                     <div>
                         <label for="password">Password:</label> <br>
-                        <input type="password" name="password" id="password" required> <br>
+                        <input type="password" name="password" id="password" required>
                     </div>
 
                 </div>
-                <a href="registration.php">Don't have an account? Register here.</a> <br>
+                <a href="registration.php">Don't have an account? Register here.</a>
                 <input type="submit" value="LOG IN" name="submit" id="login_btn"> <br>
             </form>
         </div>
