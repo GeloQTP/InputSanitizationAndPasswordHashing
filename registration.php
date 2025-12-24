@@ -1,17 +1,21 @@
 <?php
 require("db_connect.php");
+require("./classes/inputSanitizer.php");
 ?>
 
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $username = $_POST["username"] ?? '';
+
+    $isValid = new inputSanitizer();
+
+    $username = $isValid->sanitizeUsername($_POST["username"]) ?? '';
     $password = $_POST["password"] ?? '';
 
     if (empty($username) || empty($password)) { // checks if out input fields are empty.
         echo "Please Input your Credentials!";
     } else {
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT); // hash/encrypts the user password.
+        $hashedPassword = $isValid->hashPassword($password); // hash/encrypts the user password.
 
         // $statement = "INSERT INTO users (username, passcode) VALUES (?,?)"; (A)
 

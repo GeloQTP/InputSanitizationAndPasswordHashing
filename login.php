@@ -1,6 +1,6 @@
 <?php
 require("db_connect.php");
-require("inputValidation.php");
+require("./classes/inputSanitizer.php");
 ?>
 
 <?php
@@ -16,12 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking 
 
     $isValid = new inputSanitizer();
 
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // FILTERING INPUTS TO PREVENT CROSS SITE SCRIPTS
-    $passcode = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $username = $isValid->sanitizeUsername($_POST["username"]); // FILTERING INPUTS TO PREVENT CROSS SITE SCRIPTS
+    $passcode = $_POST["password"] ?? '';
 
     if (!empty($username) && !empty($passcode)) { // INPUT VALIDATION
 
-        $statement = $conn->prepare("SELECT * FROM users WHERE username = ?"); // PREPARED SQL STATEMENT TO AVOID SQL INJECTION
+        $statement = $conn->prepare("SELECT * FROM users WHERE username = ?"); // PREPARED SQL STATEMENT TO AVOID SQL INJECTION.
+
         if (!$statement) {
             die("Database error: " . $conn->error);
         }
