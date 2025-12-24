@@ -1,5 +1,5 @@
 <?php
-require("../includes/db_connect.php");
+require("db_connect.php");
 ?>
 <?php
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -16,7 +16,7 @@ $result = $statement->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="adminDashboard.css">
 </head>
 
 <body>
@@ -26,42 +26,55 @@ $result = $statement->get_result();
     </div>
 
     <header>
-        <?php require("../includes/adminHeader.php"); ?> <!--newer and stricter version of include("file_name");-->
+        <?php require("adminHeader.php"); ?> <!--newer and stricter version of include("file_name");-->
     </header>
 
     <main>
 
-        <div>
-            <h1>Welcome to the Admin Dashboard</h1>
-            <br>
-            <table style="overflow-y:auto;" border="1" cellspacing="1" width="100%" height="200" bgcolor="#f2f2f2">
-                <tr>
-                    <th>Username</th>
-                    <th>Registration Date</th>
-                    <th>User Type</th>
-                </tr>
-
-                <?php
-                while ($rows = $result->fetch_assoc()) { // while the $rows still getting rows from $result->fetch_assoc(), loop
-                ?>
-
+        <div class="container">
+            <div class="table">
+                <h1>Welcome to the Admin Dashboard</h1>
+                <br>
+                <div style="display: flex; gap:1rem;">
+                    <span>Total Users:</span>
+                    <span>Total Admins:</span>
+                    <span> New Users Today:</span>
+                    <span>New Users this Month:</span>
+                </div>
+                <table border="1" cellspacing="1" width="100%" height="200" bgcolor="#f2f2f2">
                     <tr>
-                        <td><?= htmlspecialchars($rows["username"]) ?></td>
-                        <td><?= htmlspecialchars($rows["reg_date"]) ?></td>
-                        <td><?= htmlspecialchars($rows["role"]) ?></td>
+                        <th>Username</th>
+                        <th>Registration Date</th>
+                        <th>User Type</th>
                     </tr>
 
-                <?php
-                }
-                ?>
+                    <?php
+                    while ($rows = $result->fetch_assoc()) { // while the $rows still getting rows from $result->fetch_assoc(), loop
+                    ?>
 
-            </table>
+                        <tr>
+                            <td><?= htmlspecialchars($rows["username"]) ?></td>
+                            <td><?= htmlspecialchars($rows["reg_date"]) ?></td>
+                            <td><?= htmlspecialchars($rows["role"]) ?></td>
+                        </tr>
+
+                    <?php
+                    }
+                    ?>
+
+                </table>
+            </div>
+
+            <div class="crud">
+                <h1>Search: </h1>
+                <input type="text" id="search_user">
+            </div>
         </div>
 
     </main>
 
     <footer>
-        <?php require("../includes/footer.html"); ?>
+        <?php require("footer.html"); ?>
     </footer>
 </body>
 

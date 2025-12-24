@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+
+main {
+    margin: 0.5em 2em;
+}
+
+.table {
+    width: 50%;
+    border: 1px dashed green;
+}
+
+.container {
+    border: 1px dashed red;
+    display: flex;
+    width: 100%;
+}
+
+.crud {
+    width: 50%;
+    border: 1px dashed blue;
+}

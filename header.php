@@ -55,7 +55,7 @@ if (!isset($_SESSION["username"])) {
                 <li class="messages"><i class="fa fa-envelope" style="font-size:25px"></i></li>
                 <li class="settings"><i class="fa fa-gear" style="font-size:30px"></i></li>
                 <li style="font-size: 30px;"><i class="fa fa-circle"></i></li>
-                <form action="../includes/logout.php" method="post">
+                <form action="logout.php" method="post">
                     <input type="submit" value="Log out" id="logout_btn">
                 </form>
             </ul>

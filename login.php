@@ -1,5 +1,6 @@
 <?php
 require("db_connect.php");
+require("inputValidation.php");
 ?>
 
 <?php
@@ -12,6 +13,8 @@ session_start();
 // }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") { // most reliable way when checking for a submitted form or request method
+
+    $isValid = new inputSanitizer();
 
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // FILTERING INPUTS TO PREVENT CROSS SITE SCRIPTS
     $passcode = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);

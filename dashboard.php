@@ -72,7 +72,7 @@ require("db_connect.php");
     </main>
 
     <footer>
-        <?php require("../includes/footer.html"); ?>
+        <?php require("footer.html"); ?>
     </footer>
 </body>
 
