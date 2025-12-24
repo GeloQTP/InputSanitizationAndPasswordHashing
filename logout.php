@@ -2,5 +2,5 @@
 session_start();
 session_destroy();
 setcookie("username", "", time() - 3601, "/");
-header("Location: ../pages/login.php");
+header("Location: login.php");
 exit();

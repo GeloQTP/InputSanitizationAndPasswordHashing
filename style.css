@@ -51,7 +51,8 @@ form {
 }
 
 #username,
-#password {
+#password,
+#email {
     /*inputs*/
     width: 100%;
     padding: 0.5em;

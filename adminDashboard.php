@@ -1,7 +1,6 @@
 <?php
 require("../includes/db_connect.php");
 ?>
-
 <?php
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $statement = $conn->prepare("SELECT * FROM users");
@@ -17,7 +16,7 @@ $result = $statement->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 
 <body>
@@ -32,10 +31,10 @@ $result = $statement->get_result();
 
     <main>
 
-        <div id="left-side">
+        <div>
             <h1>Welcome to the Admin Dashboard</h1>
             <br>
-            <table border="1" cellspacing="1" width="50%" height="150" bgcolor="#f2f2f2">
+            <table style="overflow-y:auto;" border="1" cellspacing="1" width="100%" height="200" bgcolor="#f2f2f2">
                 <tr>
                     <th>Username</th>
                     <th>Registration Date</th>
@@ -57,10 +56,6 @@ $result = $statement->get_result();
                 ?>
 
             </table>
-        </div>
-
-        <div id="right-side">
-
         </div>
 
     </main>

@@ -1,5 +1,5 @@
 <?php
-require("../includes/db_connect.php");
+require("db_connect.php");
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ require("../includes/db_connect.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@ require("../includes/db_connect.php");
     </div>
 
     <header>
-        <?php require("../includes/header.php"); ?> <!--newer and stricter version of include("file_name");-->
+        <?php require("header.php"); ?> <!--newer and stricter version of include("file_name");-->
     </header>
 
     <main>
